@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { SupabaseService } from '../services/supabase';
 
 export const ContactPage: React.FC = () => {
   const { showToast } = useApp();
@@ -39,6 +40,14 @@ export const ContactPage: React.FC = () => {
       return;
     }
     setSubmitted(true);
+    SupabaseService.syncContactMessage({
+      name,
+      email,
+      phone,
+      subject,
+      message
+    }).catch(err => console.warn('Supabase contact message sync notice:', err));
+
     setName('');
     setPhone('');
     setEmail('');

@@ -2,11 +2,22 @@ import React, { useState, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
 import { StorageService } from '../../services/storage';
 import { Product, Order, OrderStatus, Coupon, Review, FragranceFamily } from '../../types';
+import { 
+  SupabaseService, 
+  SUPABASE_PROJECT_ID, 
+  SUPABASE_URL, 
+  SUPABASE_ANON_KEY, 
+  SUPABASE_SQL_SCHEMA 
+} from '../../services/supabase';
 
 export const AdminDashboard: React.FC = () => {
   const { user, setUser, navigateTo, siteSettings, updateSiteSettings, showToast } = useApp();
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'orders' | 'inventory' | 'coupons' | 'reviews' | 'settings'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'orders' | 'inventory' | 'coupons' | 'reviews' | 'settings' | 'database'>('overview');
+  const [testingSupabase, setTestingSupabase] = useState(false);
+  const [syncingSupabase, setSyncingSupabase] = useState(false);
+  const [supabaseStatus, setSupabaseStatus] = useState<string | null>(null);
+  const [copiedSql, setCopiedSql] = useState(false);
 
   // Trigger state for re-rendering after storage updates
   const [version, setVersion] = useState(0);
@@ -229,7 +240,8 @@ export const AdminDashboard: React.FC = () => {
             { id: 'inventory', label: `Stock Levels (${lowStockCount} Low)`, icon: 'warehouse' },
             { id: 'coupons', label: `Vouchers (${coupons.length})`, icon: 'sell' },
             { id: 'reviews', label: `Moderation (${reviews.length})`, icon: 'rate_review' },
-            { id: 'settings', label: 'Homepage Settings', icon: 'tune' }
+            { id: 'settings', label: 'Homepage Settings', icon: 'tune' },
+            { id: 'database', label: 'Supabase DB Sync', icon: 'database' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -900,6 +912,182 @@ export const AdminDashboard: React.FC = () => {
               >
                 UPDATE STOREFRONT SETTINGS
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 8: Supabase Cloud Database */}
+        {activeTab === 'database' && (
+          <div className="space-y-6 max-w-4xl">
+            {/* Connection Credentials Card */}
+            <div className="bg-[#1d1b1a] p-6 sm:p-8 border border-[#f2ca50]/30 shadow-2xl space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#4d4635]/40 pb-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#f2ca50] text-[24px]">database</span>
+                    <h3 className="font-headline-sm text-xl text-[#e6e1df] font-serif">
+                      Supabase Cloud Database Connection
+                    </h3>
+                  </div>
+                  <p className="font-body-sm text-[12px] text-[#99907c] mt-1">
+                    Connected to your dedicated Supabase PostgreSQL project for live customer data, orders, and inquiries.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="font-label-caps text-[11px] text-emerald-400 font-bold uppercase tracking-wider">
+                    Configured & Ready
+                  </span>
+                </div>
+              </div>
+
+              {/* Credentials Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[12px]">
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/40 space-y-1">
+                  <span className="font-label-caps text-[10px] text-[#f2ca50] uppercase tracking-wider block">
+                    Supabase Project ID
+                  </span>
+                  <code className="text-[#e6e1df] font-mono select-all block bg-[#141312] p-1.5 border border-[#4d4635]/30">
+                    {SUPABASE_PROJECT_ID}
+                  </code>
+                </div>
+
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/40 space-y-1">
+                  <span className="font-label-caps text-[10px] text-[#f2ca50] uppercase tracking-wider block">
+                    Supabase REST Endpoint URL
+                  </span>
+                  <code className="text-[#e6e1df] font-mono select-all block bg-[#141312] p-1.5 border border-[#4d4635]/30 truncate">
+                    {SUPABASE_URL}
+                  </code>
+                </div>
+
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/40 space-y-1 md:col-span-2">
+                  <span className="font-label-caps text-[10px] text-[#f2ca50] uppercase tracking-wider block">
+                    Publishable / Anon API Key
+                  </span>
+                  <code className="text-[#e6e1df] font-mono select-all block bg-[#141312] p-1.5 border border-[#4d4635]/30 truncate">
+                    {SUPABASE_ANON_KEY}
+                  </code>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  disabled={testingSupabase}
+                  onClick={async () => {
+                    setTestingSupabase(true);
+                    const res = await SupabaseService.checkConnection();
+                    setTestingSupabase(false);
+                    setSupabaseStatus(res.message);
+                    showToast(res.message, res.connected ? 'success' : 'error');
+                  }}
+                  className="px-4 py-2.5 bg-[#2b2a28] hover:bg-[#363433] text-[#e6e1df] font-title-sc text-[11px] uppercase tracking-wider border border-[#4d4635]/60 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+                >
+                  <span className="material-symbols-outlined text-[16px] text-[#f2ca50]">
+                    {testingSupabase ? 'sync' : 'network_check'}
+                  </span>
+                  <span>{testingSupabase ? 'Testing Connection...' : 'Test Supabase Connection'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  disabled={syncingSupabase}
+                  onClick={async () => {
+                    setSyncingSupabase(true);
+                    try {
+                      const res = await SupabaseService.syncAllLocalData(
+                        orders,
+                        user,
+                        StorageService.getSubscribers()
+                      );
+                      showToast(`Synced ${res.syncedOrders} orders, ${res.syncedCustomers} customers, and ${res.syncedSubscribers} subscribers to Supabase.`);
+                    } catch (e: any) {
+                      showToast('Failed to sync to Supabase: ' + e?.message, 'error');
+                    } finally {
+                      setSyncingSupabase(false);
+                    }
+                  }}
+                  className="px-5 py-2.5 bg-[#f2ca50] hover:bg-[#ffe088] text-[#3c2f00] font-title-sc text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-md disabled:opacity-50"
+                >
+                  <span className="material-symbols-outlined text-[16px]">
+                    {syncingSupabase ? 'hourglass_top' : 'cloud_upload'}
+                  </span>
+                  <span>{syncingSupabase ? 'Syncing...' : 'Sync All Orders & Customers Now'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(SUPABASE_SQL_SCHEMA);
+                    setCopiedSql(true);
+                    showToast('Supabase SQL Schema copied! Paste into Supabase SQL Editor.');
+                    setTimeout(() => setCopiedSql(false), 3000);
+                  }}
+                  className="px-4 py-2.5 bg-[#211f1e] hover:bg-[#2b2a28] text-[#f2ca50] font-title-sc text-[11px] uppercase tracking-wider border border-[#f2ca50]/30 flex items-center gap-1.5 transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[16px]">
+                    {copiedSql ? 'check' : 'content_copy'}
+                  </span>
+                  <span>{copiedSql ? 'Schema Copied!' : 'Copy Supabase SQL Setup Schema'}</span>
+                </button>
+              </div>
+
+              {supabaseStatus && (
+                <div className="p-3 bg-[#141312] border border-[#f2ca50]/20 text-[12px] text-[#e6e1df] flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#f2ca50] text-[18px]">info</span>
+                  <span>{supabaseStatus}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Sync Architecture Information Card */}
+            <div className="bg-[#1d1b1a] p-6 border border-[#4d4635]/30 shadow-2xl space-y-4">
+              <h4 className="font-headline-sm text-lg text-[#e6e1df] font-serif">
+                Automated Customer Data Sync Protocol
+              </h4>
+              <p className="font-body-sm text-[13px] text-[#d0c5af]">
+                The storefront is now connected to your Supabase account. All customer details and interactions are automatically captured and dispatched in real time:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12px]">
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/30">
+                  <span className="font-label-caps text-[11px] text-[#f2ca50] uppercase tracking-wider block mb-1">
+                    1. Customer Profiles (`customers`)
+                  </span>
+                  <p className="text-[#99907c]">
+                    Saves full name, email, phone number, delivery address, city, and account role upon customer checkout or profile update.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/30">
+                  <span className="font-label-caps text-[11px] text-[#f2ca50] uppercase tracking-wider block mb-1">
+                    2. Customer Orders (`orders`)
+                  </span>
+                  <p className="text-[#99907c]">
+                    Saves complete invoice breakdown, items JSON, courier tracking number, delivery address, payment method (COD/Card/Raast), and status.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/30">
+                  <span className="font-label-caps text-[11px] text-[#f2ca50] uppercase tracking-wider block mb-1">
+                    3. Newsletter Subscribers (`subscribers`)
+                  </span>
+                  <p className="text-[#99907c]">
+                    Captures all patron email registrations from the header, footer, and launch banner with timestamp.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#211f1e] border border-[#4d4635]/30">
+                  <span className="font-label-caps text-[11px] text-[#f2ca50] uppercase tracking-wider block mb-1">
+                    4. Concierge Inquiries (`contact_messages`)
+                  </span>
+                  <p className="text-[#99907c]">
+                    Stores corporate gifting requests and patron support inquiries directly in Supabase.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}

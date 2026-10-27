@@ -20,6 +20,7 @@ import {
   initialAdminUser,
   initialCustomerUser 
 } from '../data/seedData';
+import { SupabaseService } from './supabase';
 
 const STORAGE_KEYS = {
   PRODUCTS: 's2br_products_v1',
@@ -170,6 +171,10 @@ export const StorageService = {
 
     orders.unshift(newOrder);
     safeSet(STORAGE_KEYS.ORDERS, orders);
+    // Asynchronously sync customer details and order to Supabase account
+    SupabaseService.syncOrder(newOrder).catch((err) => {
+      console.warn('Supabase sync notice:', err);
+    });
     return newOrder;
   },
 
@@ -235,6 +240,7 @@ export const StorageService = {
     };
     list.unshift(newRev);
     safeSet(STORAGE_KEYS.REVIEWS, list);
+    SupabaseService.syncReview(newRev).catch((err) => console.warn('Supabase review sync notice:', err));
     return newRev;
   },
 
@@ -303,7 +309,12 @@ export const StorageService = {
   // Current User
   getCurrentUser: (): User | null => safeGet<User | null>(STORAGE_KEYS.USER, initialCustomerUser),
 
-  setCurrentUser: (user: User | null): void => safeSet(STORAGE_KEYS.USER, user),
+  setCurrentUser: (user: User | null): void => {
+    safeSet(STORAGE_KEYS.USER, user);
+    if (user) {
+      SupabaseService.syncCustomer(user).catch((err) => console.warn('Supabase customer sync notice:', err));
+    }
+  },
 
   // Newsletter
   getSubscribers: (): string[] => safeGet<string[]>(STORAGE_KEYS.SUBSCRIBERS, ["shahid@pakistan.com", "daniyal.shah@gmail.com"]),
@@ -314,6 +325,7 @@ export const StorageService = {
     if (!list.includes(clean)) {
       list.unshift(clean);
       safeSet(STORAGE_KEYS.SUBSCRIBERS, list);
+      SupabaseService.syncSubscriber(clean).catch((err) => console.warn('Supabase subscriber notice:', err));
       return true;
     }
     return false;
