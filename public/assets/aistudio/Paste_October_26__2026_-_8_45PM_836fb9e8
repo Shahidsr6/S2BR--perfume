@@ -1,0 +1,1924 @@
+# S2BR FRAGRANCES — COMPLETE E-COMMERCE WEBSITE
+## Google Antigravity Master Development Prompt
+
+You are a senior full-stack engineer, UI/UX engineer, database architect, security engineer, and e-commerce developer.
+
+Build a complete, production-ready e-commerce website for a premium Pakistani fragrance brand called:
+
+**S2BR FRAGRANCES**
+
+The website must be a real working online perfume store, not just a static UI demo.
+
+---
+
+# 1. DESIGN SOURCE OF TRUTH
+
+A complete UI/UX design has already been created in Google Stitch.
+
+Use the Stitch-generated design as the primary visual reference and source of truth for:
+
+- Layout
+- Spacing
+- Typography
+- Colors
+- Buttons
+- Cards
+- Navigation
+- Hero sections
+- Product grids
+- Product pages
+- Cart
+- Checkout
+- Footer
+- Mobile responsive layouts
+- Animations
+- Overall visual hierarchy
+
+Also use the uploaded S2BR brand logo and promotional banner assets.
+
+Do NOT copy another competitor's website exactly.
+
+Competitor websites may only be used as inspiration for common e-commerce functionality and information architecture.
+
+Create an original S2BR visual identity.
+
+---
+
+# 2. BRAND IDENTITY
+
+Brand:
+
+S2BR Fragrances
+
+Industry:
+
+Premium Perfumes & Fragrances
+
+Target market:
+
+Pakistan
+
+Brand personality:
+
+- Premium
+- Elegant
+- Sophisticated
+- Modern
+- Luxurious
+- Trustworthy
+- Minimal
+- High-end
+- Masculine but suitable for women
+- Pakistani luxury fragrance brand
+
+Primary visual identity:
+
+- Matte Black
+- Metallic Champagne Gold
+- Warm Ivory
+- Cream
+- Dark Brown
+- Charcoal
+
+The website should feel like a premium perfume boutique rather than a generic online store.
+
+Avoid excessive gradients, excessive animations, cartoonish elements, or cheap-looking UI.
+
+---
+
+# 3. RECOMMENDED TECHNOLOGY STACK
+
+Build the application using a modern, maintainable full-stack architecture.
+
+Preferred stack:
+
+Frontend:
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+Backend:
+- Next.js server-side/API architecture
+
+Database:
+- PostgreSQL
+
+Authentication:
+- Secure customer authentication
+- Secure admin authentication
+- Role-based access control
+
+Image storage:
+- Proper cloud/local storage abstraction
+
+Payments:
+- Cash on Delivery as the primary Pakistani payment method
+- Structure the payment system so online payment gateways can be added later
+
+Currency:
+
+PKR
+
+The architecture must be modular so the database, payment provider, storage provider, and email/SMS provider can be replaced later without rebuilding the entire application.
+
+---
+
+# 4. PROJECT STRUCTURE
+
+Create a clean professional project structure.
+
+Separate:
+
+- Components
+- Pages
+- Layouts
+- API/backend logic
+- Database
+- Authentication
+- Admin
+- Customer account
+- Products
+- Orders
+- Cart
+- Checkout
+- Reviews
+- Blog
+- Utilities
+- Validation
+- Configuration
+- Types
+- Assets
+
+Use reusable components instead of duplicating code.
+
+Keep business logic separate from UI.
+
+Use TypeScript types/interfaces throughout the application.
+
+---
+
+# 5. CUSTOMER WEBSITE
+
+Create the following public pages.
+
+## Home
+
+Create a premium homepage containing:
+
+### Announcement bar
+
+Example:
+
+"Free Delivery on Orders Above PKR 3,000"
+
+Do not hardcode this everywhere. Make it configurable from the admin panel.
+
+### Header
+
+Include:
+
+- S2BR logo
+- Home
+- Shop
+- Men
+- Women
+- Collections
+- Best Sellers
+- New Arrivals
+- About
+- Contact
+
+Header icons:
+
+- Search
+- Account
+- Wishlist
+- Cart
+
+On mobile:
+
+- Hamburger menu
+- Logo
+- Search
+- Cart
+
+Create a polished sticky header.
+
+---
+
+# 6. HERO SECTION
+
+Use the provided S2BR promotional banner where appropriate.
+
+Hero content:
+
+Headline:
+
+"Discover Your Signature Scent"
+
+Supporting text:
+
+"Premium fragrances crafted to leave a lasting impression."
+
+Buttons:
+
+"Shop Collection"
+
+"Explore Best Sellers"
+
+The hero must look premium and cinematic.
+
+Do not distort the uploaded brand assets.
+
+Ensure the hero works correctly on:
+
+- Desktop
+- Tablet
+- Mobile
+
+---
+
+# 7. TRUST SECTION
+
+Create a premium trust/benefit strip containing:
+
+- Long-Lasting Fragrance
+- Premium Packaging
+- Fast Delivery Across Pakistan
+- 7-Day Easy Exchange
+
+Use elegant icons.
+
+These values should be configurable if possible.
+
+---
+
+# 8. SHOP BY CATEGORY
+
+Create category cards for:
+
+- Luxury Perfumes
+- Premium Attars
+- Concentrated Perfumes
+- Oud Collection
+- Men's Collection
+- Women's Collection
+
+Each category should link to its relevant shop/filter page.
+
+---
+
+# 9. BEST SELLERS
+
+Create a dynamic Best Sellers section.
+
+Product cards must display:
+
+- Product image
+- Product name
+- Short description
+- Rating
+- Review count
+- Price
+- Sale price if applicable
+- Discount percentage
+- Available sizes
+- Wishlist button
+- Add to Cart button
+- Quick View
+
+Product cards must come from the database.
+
+Do NOT hardcode product data into the UI.
+
+---
+
+# 10. SIGNATURE COLLECTION
+
+Create a premium visual section for the S2BR Signature Collection.
+
+Include:
+
+- Large product imagery
+- Collection title
+- Short brand description
+- CTA
+
+CTA:
+
+"Explore Collection"
+
+---
+
+# 11. FRAGRANCE PROFILES
+
+Create a "Shop by Fragrance" section.
+
+Profiles:
+
+- Fresh
+- Woody
+- Oud
+- Floral
+- Sweet
+- Citrus
+- Oriental
+- Spicy
+
+Clicking a profile should take the customer to a filtered product listing.
+
+---
+
+# 12. MEN'S COLLECTION
+
+Create a dedicated section for men's fragrances.
+
+Include:
+
+- Premium visual
+- Featured products
+- CTA
+
+CTA:
+
+"Shop Men's Fragrances"
+
+---
+
+# 13. WOMEN'S COLLECTION
+
+Create a dedicated women's fragrance section.
+
+Include:
+
+- Premium visual
+- Featured products
+- CTA
+
+CTA:
+
+"Shop Women's Fragrances"
+
+---
+
+# 14. NEW ARRIVALS
+
+Create a dynamic New Arrivals carousel/grid.
+
+Products should automatically appear based on their database creation date or "new arrival" flag.
+
+---
+
+# 15. FEATURED PRODUCT
+
+Create a large featured-product section.
+
+Display:
+
+- Product image
+- Product name
+- Description
+- Price
+- Original price
+- Rating
+- Reviews
+- Fragrance notes
+- Longevity
+- Sillage
+- Available sizes
+- Add to Cart
+- Buy Now
+- Wishlist
+
+---
+
+# 16. SHOP PAGE
+
+Create a complete product listing page.
+
+Features:
+
+- Product grid
+- Search
+- Category filter
+- Gender filter
+- Price filter
+- Fragrance profile filter
+- Collection filter
+- Size filter
+- Rating filter
+- Availability filter
+- Sort by:
+  - Featured
+  - Newest
+  - Price Low to High
+  - Price High to Low
+  - Best Selling
+  - Highest Rated
+
+Desktop:
+
+Sidebar filters.
+
+Mobile:
+
+Filter drawer.
+
+Pagination or infinite scrolling should be implemented cleanly.
+
+---
+
+# 17. SEARCH
+
+Create a global product search.
+
+Search should support:
+
+- Product name
+- Category
+- Fragrance profile
+- Collection
+- Tags
+
+Include search suggestions/autocomplete if practical.
+
+Display a proper empty-state when no products are found.
+
+Example:
+
+"No fragrances found. Try another search."
+
+---
+
+# 18. PRODUCT DETAILS PAGE
+
+Every product needs its own dynamic page.
+
+URL structure should be SEO-friendly.
+
+Example:
+
+/product/product-name
+
+Display:
+
+- Product image gallery
+- Product name
+- Rating
+- Review count
+- Price
+- Sale price
+- Discount
+- Stock status
+- Size selector
+- Quantity selector
+- Add to Cart
+- Buy Now
+- Wishlist
+
+Product information:
+
+- Description
+- Fragrance family
+- Top notes
+- Heart notes
+- Base notes
+- Longevity
+- Sillage
+- Ingredients
+- Size
+- Gender
+- Shipping information
+- Return/exchange information
+
+Also include:
+
+- Customer reviews
+- Related products
+- Recently viewed products
+
+---
+
+# 19. PRODUCT IMAGE GALLERY
+
+Create a premium gallery.
+
+Features:
+
+- Main image
+- Thumbnail images
+- Zoom
+- Mobile swipe
+- Full-screen gallery
+
+Images must be optimized for performance.
+
+Use proper alt text.
+
+---
+
+# 20. WISHLIST
+
+Authenticated customers can:
+
+- Add products to wishlist
+- Remove products
+- View wishlist
+- Move product from wishlist to cart
+
+If a guest clicks wishlist:
+
+Show a clean login/signup prompt.
+
+---
+
+# 21. SHOPPING CART
+
+Create a fully functional cart.
+
+Display:
+
+- Product image
+- Product name
+- Selected size
+- Price
+- Quantity
+- Remove
+- Subtotal
+
+Cart summary:
+
+- Subtotal
+- Shipping
+- Discount
+- Total
+
+Allow quantity updates without unnecessary page reloads.
+
+Persist cart for logged-in customers.
+
+For guests, maintain cart using secure client-side/local persistence and merge it with the customer's cart after login.
+
+---
+
+# 22. COUPONS
+
+Implement coupon functionality.
+
+Coupon fields:
+
+- Code
+- Discount type
+- Percentage
+- Fixed amount
+- Minimum order amount
+- Maximum discount
+- Expiry date
+- Usage limit
+- Active/inactive
+- Applicable products/categories
+
+Customers can enter coupon codes during checkout.
+
+Validate coupons server-side.
+
+Never trust discount calculations from the frontend.
+
+---
+
+# 23. CHECKOUT
+
+Create a professional one-page or multi-step checkout.
+
+Customer fields:
+
+- Full Name
+- Phone Number
+- Email
+- Address
+- City
+- Province
+- Postal Code
+- Order Notes
+
+Pakistan-focused province options:
+
+- Punjab
+- Sindh
+- Khyber Pakhtunkhwa
+- Balochistan
+- Islamabad Capital Territory
+- Gilgit-Baltistan
+- Azad Jammu & Kashmir
+
+Payment method:
+
+## Cash on Delivery
+
+Display:
+
+"Cash on Delivery"
+
+Add architecture for future online payment integration.
+
+---
+
+# 24. ORDER SUMMARY
+
+Before placing an order show:
+
+- Products
+- Quantities
+- Selected sizes
+- Subtotal
+- Shipping
+- Discount
+- Grand total
+- Customer address
+- Payment method
+
+Require customer confirmation before order creation.
+
+---
+
+# 25. ORDER CREATION
+
+When an order is placed:
+
+Generate:
+
+- Unique order ID
+- Customer information
+- Products
+- Product prices at purchase time
+- Quantities
+- Size
+- Subtotal
+- Shipping fee
+- Discount
+- Total
+- Payment method
+- Order status
+- Created date
+
+IMPORTANT:
+
+Store the actual product price at the time of purchase.
+
+Do not calculate old orders using the current product price.
+
+---
+
+# 26. ORDER STATUS
+
+Implement statuses:
+
+- Pending
+- Confirmed
+- Processing
+- Packed
+- Shipped
+- Out for Delivery
+- Delivered
+- Cancelled
+- Returned
+- Refunded
+
+Create an order timeline for customers.
+
+---
+
+# 27. ORDER TRACKING
+
+Customer account should have:
+
+"My Orders"
+
+Each order should show:
+
+- Order ID
+- Date
+- Products
+- Total
+- Payment method
+- Current status
+
+Order detail page:
+
+- Order summary
+- Shipping address
+- Status timeline
+- Items
+- Total
+
+---
+
+# 28. CUSTOMER ACCOUNT
+
+Create:
+
+/account
+
+Sections:
+
+- Profile
+- My Orders
+- Wishlist
+- Addresses
+- Account Settings
+- Logout
+
+Customer can update:
+
+- Name
+- Phone
+- Email
+- Password
+- Address
+
+---
+
+# 29. AUTHENTICATION
+
+Implement secure:
+
+- Sign Up
+- Login
+- Logout
+- Forgot Password
+- Reset Password
+- Session handling
+
+Use secure password hashing.
+
+Never store plaintext passwords.
+
+Validate all authentication inputs.
+
+Protect customer account routes.
+
+---
+
+# 30. ADMIN PANEL
+
+Create a completely separate professional admin dashboard.
+
+Admin route:
+
+/admin
+
+Protect the entire admin area with authentication and authorization.
+
+Only users with admin privileges can access it.
+
+---
+
+# 31. ADMIN DASHBOARD
+
+Display:
+
+- Total Sales
+- Today's Sales
+- Monthly Sales
+- Total Orders
+- Pending Orders
+- Delivered Orders
+- Cancelled Orders
+- Total Customers
+- Total Products
+- Low Stock Products
+
+Include charts:
+
+- Sales over time
+- Orders over time
+- Best-selling products
+- Revenue by category
+
+Use real database data.
+
+Do not create fake dashboard numbers once real data exists.
+
+---
+
+# 32. PRODUCT MANAGEMENT
+
+Admin can:
+
+- Create product
+- Edit product
+- Delete product
+- Activate/deactivate product
+- Upload product images
+- Set price
+- Set sale price
+- Set stock
+- Set SKU
+- Set sizes
+- Set category
+- Set collection
+- Set gender
+- Set fragrance profile
+- Set fragrance notes
+- Set longevity
+- Set sillage
+- Set description
+- Mark as Best Seller
+- Mark as New Arrival
+- Mark as Featured
+
+Use validation.
+
+---
+
+# 33. INVENTORY MANAGEMENT
+
+Track inventory.
+
+Each product should have:
+
+- SKU
+- Stock quantity
+- Low-stock threshold
+- Out-of-stock status
+
+Automatically prevent customers from ordering unavailable quantities.
+
+When an order is confirmed:
+
+Reduce inventory appropriately.
+
+When an order is cancelled before fulfillment:
+
+Restore inventory where appropriate.
+
+Avoid negative stock.
+
+---
+
+# 34. ORDER MANAGEMENT ADMIN
+
+Admin can:
+
+- View orders
+- Search orders
+- Filter orders
+- Open order details
+- Update order status
+- View customer information
+- View purchased products
+- View payment method
+- View total
+- Add internal order notes
+
+Allow order status updates from the admin panel.
+
+---
+
+# 35. CUSTOMER MANAGEMENT
+
+Admin can:
+
+- View customers
+- Search customers
+- View customer details
+- View order history
+- View total spending
+- Disable/enable account where appropriate
+
+Do not expose sensitive authentication information.
+
+---
+
+# 36. CATEGORY MANAGEMENT
+
+Admin can manage:
+
+- Categories
+- Collections
+- Gender
+- Fragrance profiles
+- Product tags
+
+Allow:
+
+- Create
+- Edit
+- Delete
+- Activate/deactivate
+
+---
+
+# 37. COUPON MANAGEMENT
+
+Admin dashboard should include:
+
+- Create coupon
+- Edit coupon
+- Delete coupon
+- Activate/deactivate
+- Set expiry
+- Set usage limit
+- Set discount
+- Set minimum order
+
+---
+
+# 38. HOMEPAGE CONTENT MANAGEMENT
+
+Admin should be able to manage important homepage content without changing code.
+
+Configurable items:
+
+- Announcement bar
+- Hero heading
+- Hero description
+- Hero image
+- CTA text
+- Featured products
+- Best sellers
+- New arrivals
+- Promotional banners
+
+---
+
+# 39. REVIEWS
+
+Implement customer reviews.
+
+Customers can review products they purchased.
+
+Review fields:
+
+- Rating
+- Review title
+- Review text
+
+Admin can:
+
+- Approve
+- Reject
+- Delete
+
+Only approved reviews appear publicly.
+
+Prevent obvious duplicate/spam review submissions.
+
+---
+
+# 40. BLOG / S2BR JOURNAL
+
+Create a blog system.
+
+Pages:
+
+/blog
+
+/blog/[slug]
+
+Admin can:
+
+- Create post
+- Edit post
+- Delete post
+- Publish/unpublish
+- Upload featured image
+- Set title
+- Set slug
+- Set content
+- Set author
+- Set publication date
+
+Use SEO-friendly URLs.
+
+---
+
+# 41. ABOUT PAGE
+
+Create an elegant S2BR brand story.
+
+Sections:
+
+- Our Story
+- Our Philosophy
+- Fragrance Craftsmanship
+- Quality
+- Packaging
+- Customer Promise
+
+Do not copy competitor text.
+
+Use original S2BR content.
+
+---
+
+# 42. CONTACT PAGE
+
+Include:
+
+- Contact form
+- Phone
+- Email
+- WhatsApp
+- Social media links
+- Business information
+- FAQ link if appropriate
+
+Contact form must validate input.
+
+Prevent spam submissions.
+
+---
+
+# 43. FAQ
+
+Create FAQ section covering:
+
+- Delivery
+- Cash on Delivery
+- Exchange
+- Returns
+- Fragrance longevity
+- Product sizes
+- Order tracking
+- Payment
+- Shipping
+
+Admin should ideally be able to manage FAQ entries.
+
+---
+
+# 44. FOOTER
+
+Create a premium footer containing:
+
+### Shop
+
+- All Products
+- Best Sellers
+- New Arrivals
+- Men's
+- Women's
+- Collections
+
+### Help
+
+- Contact
+- FAQs
+- Shipping
+- Returns & Exchange
+- Order Tracking
+
+### Company
+
+- About S2BR
+- S2BR Journal
+- Contact
+
+### Legal
+
+- Privacy Policy
+- Terms & Conditions
+- Refund Policy
+
+Also include:
+
+- S2BR logo
+- Social icons
+- Newsletter signup
+- Copyright
+
+---
+
+# 45. NEWSLETTER
+
+Create newsletter signup.
+
+Fields:
+
+- Email
+
+Validate email.
+
+Prevent duplicate subscriptions.
+
+Store subscribers in database.
+
+Create an admin page to view/export subscribers.
+
+---
+
+# 46. DATABASE DESIGN
+
+Create a proper relational database.
+
+Suggested entities:
+
+Users
+
+Products
+
+ProductImages
+
+Categories
+
+Collections
+
+FragranceProfiles
+
+ProductSizes
+
+Inventory
+
+Orders
+
+OrderItems
+
+Addresses
+
+Wishlists
+
+WishlistItems
+
+Cart
+
+CartItems
+
+Coupons
+
+CouponUsage
+
+Reviews
+
+BlogPosts
+
+Faqs
+
+NewsletterSubscribers
+
+SiteSettings
+
+Banners
+
+AdminUsers / Roles
+
+Create proper relationships and indexes.
+
+Use database constraints where appropriate.
+
+---
+
+# 47. IMPORTANT DATABASE RULE
+
+Never trust frontend calculations.
+
+The server must calculate:
+
+- Product price
+- Quantity
+- Subtotal
+- Discount
+- Shipping
+- Total
+
+The server must validate:
+
+- Product existence
+- Product availability
+- Stock
+- Coupon validity
+- Product price
+- User permissions
+
+before creating an order.
+
+---
+
+# 48. SECURITY
+
+Follow production security practices.
+
+Implement:
+
+- Password hashing
+- Secure authentication
+- Authorization
+- Admin route protection
+- Server-side validation
+- Input sanitization
+- SQL injection protection
+- XSS protection
+- CSRF protection where applicable
+- Secure cookies
+- Rate limiting for sensitive endpoints
+- File upload validation
+- Image type validation
+- Maximum upload sizes
+- Environment variables for secrets
+
+Never expose:
+
+- Database passwords
+- API keys
+- Secret tokens
+- Authentication secrets
+
+Never place secrets directly inside frontend code.
+
+---
+
+# 49. IMAGE UPLOAD SECURITY
+
+Admin image uploads must validate:
+
+- File type
+- File size
+- File extension
+- MIME type
+
+Only allow safe image formats.
+
+Optimize/compress uploaded images where possible.
+
+Generate proper filenames.
+
+Do not trust user-provided filenames.
+
+---
+
+# 50. SEO
+
+Implement proper SEO.
+
+Every product should have:
+
+- SEO title
+- Meta description
+- Canonical URL
+- Open Graph metadata
+- Product structured data where appropriate
+
+Create:
+
+- sitemap
+- robots.txt
+
+Use semantic HTML.
+
+Use clean URLs.
+
+Example:
+
+/shop
+
+/product/s2br-signature
+
+/collections/oud
+
+/category/mens
+
+/blog/perfume-guide
+
+---
+
+# 51. PERFORMANCE
+
+Optimize the website for fast loading.
+
+Use:
+
+- Image optimization
+- Lazy loading
+- Responsive images
+- Code splitting
+- Efficient database queries
+- Pagination
+- Caching where appropriate
+
+Avoid unnecessary client-side rendering.
+
+Do not load huge images unnecessarily.
+
+---
+
+# 52. RESPONSIVE DESIGN
+
+The entire application must work perfectly on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Test common widths.
+
+Mobile is NOT an afterthought.
+
+Ensure:
+
+- Navigation works
+- Product cards fit correctly
+- Checkout is usable
+- Buttons are touch-friendly
+- Text is readable
+- Images are correctly cropped
+- Admin dashboard remains usable
+
+---
+
+# 53. UX DETAILS
+
+Implement polished states:
+
+Loading:
+
+Use elegant skeleton loaders where appropriate.
+
+Empty:
+
+Show helpful empty states.
+
+Error:
+
+Show friendly error messages.
+
+Success:
+
+Show confirmation messages/toasts.
+
+Examples:
+
+"Product added to cart."
+
+"Your order has been placed successfully."
+
+"Your wishlist has been updated."
+
+---
+
+# 54. MICRO INTERACTIONS
+
+Use subtle animations.
+
+Examples:
+
+- Product hover
+- Button hover
+- Cart animation
+- Image transitions
+- Smooth drawer
+- Modal transitions
+- Page transitions where appropriate
+
+Animations must be subtle and premium.
+
+Do not over-animate the website.
+
+Respect reduced-motion accessibility preferences.
+
+---
+
+# 55. ACCESSIBILITY
+
+Follow accessibility best practices.
+
+Include:
+
+- Proper heading hierarchy
+- Alt text
+- Keyboard navigation
+- Focus states
+- Accessible buttons
+- Accessible forms
+- Good contrast
+- ARIA labels where needed
+
+---
+
+# 56. PAKISTAN E-COMMERCE REQUIREMENTS
+
+The store is specifically targeted toward Pakistani customers.
+
+Use:
+
+Currency:
+
+PKR
+
+Payment:
+
+Cash on Delivery
+
+Phone:
+
+Pakistan-friendly phone validation.
+
+Address:
+
+Pakistan-friendly address fields.
+
+Shipping:
+
+Support configurable delivery charges.
+
+Admin should be able to configure:
+
+- Standard shipping
+- Free shipping threshold
+- City-based shipping if needed
+- Province-based shipping if needed
+
+Default example:
+
+Free delivery above PKR 3,000.
+
+Make this configurable from admin.
+
+---
+
+# 57. PRODUCT SEED DATA
+
+Create realistic demo/seed products for S2BR.
+
+Example product names can include original names such as:
+
+- S2BR Signature
+- S2BR Noir
+- S2BR Oud Royale
+- S2BR Imperial
+- S2BR Velvet
+- S2BR Amber
+- S2BR Essence
+- S2BR Élan
+
+Do not copy competitor product names, descriptions, images, or branding.
+
+Seed products should contain:
+
+- Name
+- Description
+- Price
+- Category
+- Gender
+- Fragrance profile
+- Notes
+- Longevity
+- Sillage
+- Stock
+- SKU
+- Images/placeholders
+
+---
+
+# 58. ADMIN DEMO ACCOUNT
+
+For local development only, create a clearly documented development admin account mechanism.
+
+Do NOT hardcode production credentials.
+
+Use environment variables or a secure setup process.
+
+---
+
+# 59. ENVIRONMENT VARIABLES
+
+Create a `.env.example`.
+
+Include placeholders for:
+
+DATABASE_URL
+
+AUTH_SECRET
+
+IMAGE_STORAGE credentials if required
+
+EMAIL credentials if required
+
+PAYMENT credentials if required
+
+Any third-party API keys
+
+Never commit real secrets to Git.
+
+---
+
+# 60. ERROR HANDLING
+
+Implement centralized error handling.
+
+Errors should:
+
+- Be logged safely
+- Not expose sensitive information
+- Show user-friendly messages
+- Return appropriate HTTP status codes
+
+Create useful development logs without exposing secrets.
+
+---
+
+# 61. API ARCHITECTURE
+
+Create clean APIs for:
+
+Authentication
+
+Products
+
+Categories
+
+Collections
+
+Search
+
+Cart
+
+Wishlist
+
+Checkout
+
+Orders
+
+Coupons
+
+Reviews
+
+Customers
+
+Admin
+
+Blog
+
+Newsletter
+
+Site settings
+
+Use proper HTTP methods.
+
+Validate request bodies.
+
+Return consistent API responses.
+
+---
+
+# 62. ADMIN AUTHORIZATION
+
+Implement role-based access.
+
+Roles can include:
+
+- CUSTOMER
+- ADMIN
+
+Optionally support:
+
+- SUPER_ADMIN
+- STAFF
+
+Only authorized roles can access admin operations.
+
+Never rely only on hiding admin UI.
+
+Authorization must also happen server-side.
+
+---
+
+# 63. DATA VALIDATION
+
+Use a proper schema validation library where appropriate.
+
+Validate:
+
+- Email
+- Phone
+- Password
+- Product fields
+- Prices
+- Quantity
+- Coupon codes
+- Addresses
+- Order information
+- Review fields
+
+Never assume frontend validation is sufficient.
+
+---
+
+# 64. TESTING
+
+Before considering the project complete, test:
+
+### Customer
+
+- Signup
+- Login
+- Logout
+- Search
+- Product filtering
+- Product detail
+- Add to cart
+- Remove from cart
+- Quantity changes
+- Wishlist
+- Coupon
+- Checkout
+- COD order
+- Order history
+- Review
+- Account update
+
+### Admin
+
+- Admin login
+- Product CRUD
+- Inventory
+- Orders
+- Customers
+- Categories
+- Coupons
+- Reviews
+- Blog
+- Homepage content
+
+### Security
+
+- Unauthorized admin access
+- Invalid requests
+- Invalid coupon
+- Overselling stock
+- Invalid product ID
+- Invalid order
+- Authentication errors
+
+### Responsive
+
+Test desktop/tablet/mobile.
+
+---
+
+# 65. DEMO DATA VS REAL DATA
+
+During initial development, seed the database with demo data.
+
+But architecture must support replacing demo data with real production data.
+
+Do not permanently hardcode products into components.
+
+All dynamic store content should come from the database.
+
+---
+
+# 66. CODE QUALITY
+
+Write clean production-quality code.
+
+Requirements:
+
+- Reusable components
+- Clear naming
+- Type safety
+- Modular architecture
+- No unnecessary duplication
+- No giant components
+- No hardcoded secrets
+- No dead code
+- No unnecessary dependencies
+
+Add comments only where they genuinely improve maintainability.
+
+---
+
+# 67. DESIGN CONSISTENCY
+
+The Stitch design is the visual source of truth.
+
+Do not randomly redesign sections during implementation.
+
+Preserve:
+
+- Color system
+- Typography
+- Spacing
+- Card design
+- Button styles
+- Navigation
+- Product layout
+- Visual hierarchy
+
+If a design element is missing for a functional requirement, extend the existing design system rather than introducing a completely different style.
+
+---
+
+# 68. BRAND ASSETS
+
+Use the uploaded:
+
+- S2BR logo
+- S2BR promotional banner
+
+throughout the website where appropriate.
+
+Do not generate a replacement logo.
+
+Do not change the logo's proportions.
+
+Maintain correct aspect ratio.
+
+For missing product photography, use clearly replaceable placeholders until real product images are available.
+
+---
+
+# 69. DO NOT COPY COMPETITOR
+
+Important:
+
+Do NOT copy:
+
+- Competitor logo
+- Competitor images
+- Competitor text
+- Competitor exact product names
+- Competitor branding
+- Competitor HTML/CSS
+- Competitor exact page design
+
+The final website must belong visually and commercially to S2BR Fragrances.
+
+Use only general e-commerce conventions as inspiration.
+
+---
+
+# 70. FINAL WEBSITE EXPERIENCE
+
+The final result should feel like a real premium Pakistani fragrance company.
+
+A customer should be able to:
+
+1. Visit the homepage
+2. Browse collections
+3. Search products
+4. Filter products
+5. Open a product
+6. Select size
+7. Add product to cart
+8. Apply coupon
+9. Checkout
+10. Choose Cash on Delivery
+11. Place an order
+12. Receive an order confirmation
+13. Track the order
+14. Leave a review after purchase
+
+An admin should be able to:
+
+1. Login
+2. Manage products
+3. Manage inventory
+4. Manage orders
+5. Manage customers
+6. Manage categories
+7. Manage coupons
+8. Manage reviews
+9. Manage blog posts
+10. Manage homepage content
+11. View sales analytics
+
+---
+
+# 71. DEVELOPMENT APPROACH
+
+Do NOT generate an incomplete fake website and declare it finished.
+
+Build the project systematically.
+
+Recommended development phases:
+
+PHASE 1:
+Project setup + Stitch design implementation
+
+PHASE 2:
+Database + backend architecture
+
+PHASE 3:
+Authentication
+
+PHASE 4:
+Products + categories
+
+PHASE 5:
+Shop + search + filters
+
+PHASE 6:
+Cart + wishlist
+
+PHASE 7:
+Checkout + COD
+
+PHASE 8:
+Orders + order tracking
+
+PHASE 9:
+Admin dashboard
+
+PHASE 10:
+Reviews + coupons + blog
+
+PHASE 11:
+SEO + performance + security
+
+PHASE 12:
+Testing + bug fixing + deployment preparation
+
+After each phase:
+
+- Run the application
+- Check for errors
+- Fix errors
+- Test the affected functionality
+- Continue to the next phase
+
+---
+
+# 72. IMPORTANT ANTIGRAVITY BEHAVIOR
+
+When implementing the project:
+
+1. First inspect the existing Stitch design and project files.
+2. Identify all available assets.
+3. Preserve the established S2BR design system.
+4. Create the project architecture.
+5. Implement the frontend.
+6. Implement the backend.
+7. Connect the database.
+8. Implement authentication.
+9. Implement e-commerce functionality.
+10. Implement admin functionality.
+11. Test all important flows.
+12. Fix errors before moving forward.
+
+Do not replace working code unnecessarily.
+
+If an existing component works correctly, improve or extend it rather than rebuilding it without reason.
+
+---
+
+# 73. PRODUCTION READINESS
+
+Before finalizing the project, verify:
+
+- No broken routes
+- No console errors
+- No server errors
+- No missing images
+- No broken buttons
+- No fake checkout
+- No fake order creation
+- No hardcoded product inventory
+- No exposed secrets
+- No unauthorized admin access
+- No negative inventory
+- No invalid order totals
+- No broken mobile layout
+- No obvious accessibility issues
+
+---
+
+# 74. FINAL SUCCESS CRITERIA
+
+The project is complete only when:
+
+- S2BR branding is consistently applied.
+- Stitch design has been faithfully implemented.
+- The website is responsive.
+- Products are database-driven.
+- Search and filters work.
+- Product details work.
+- Cart works.
+- Wishlist works.
+- Checkout works.
+- COD orders work.
+- Orders are stored in the database.
+- Inventory is managed correctly.
+- Customers can view orders.
+- Admin can manage the store.
+- Coupons work securely.
+- Reviews work.
+- Blog works.
+- SEO is implemented.
+- Security practices are implemented.
+- The application can be prepared for production deployment.
+
+Build this as a serious commercial e-commerce product, not as a classroom mockup.
+
+Prioritize:
+
+**Premium design + real functionality + security + scalability + performance + excellent UX.**
+
+Brand:
+
+**S2BR FRAGRANCES**
+
+Tagline direction:
+
+**"Discover Your Signature Scent."**

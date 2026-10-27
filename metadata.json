@@ -1,0 +1,6 @@
+{
+  "name": "S2BR Fragrances | Haute Parfumerie",
+  "description": "Artisanal luxury e-commerce boutique for S2BR Fragrances. Haute perfumerie, royal ouds, and bespoke extrait de parfum crafted for Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
