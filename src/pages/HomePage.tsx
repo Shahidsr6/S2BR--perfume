@@ -57,7 +57,17 @@ export const HomePage: React.FC = () => {
               <img
                 alt="S2BR Fragrances Official Launch Campaign featuring bespoke luxury bottle and regal portraiture"
                 className="w-full h-full object-cover object-center transform scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000 select-none"
-                src="/public/assets/aistudio/Image_2_745f6932.png"
+                src="/assets/aistudio/S2BR_Luxury_Perfume_Collection_5b2fbd6a.png"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.tried) {
+                    target.dataset.tried = '1';
+                    target.src = '/public/assets/aistudio/S2BR_Luxury_Perfume_Collection_5b2fbd6a.png';
+                  } else if (target.dataset.tried === '1') {
+                    target.dataset.tried = '2';
+                    target.src = '/assets/aistudio/Image_2_745f6932.png';
+                  }
+                }}
               />
               {/* Subtle vignette overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0d] via-[#141312]/20 to-transparent" />
